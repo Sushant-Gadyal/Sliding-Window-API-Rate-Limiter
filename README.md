@@ -172,6 +172,8 @@ rateLimiter({ secondsWindow: 30, allowedHits: 10 }) // 10 requests per 30 second
 
 ```
 
+---
+
 ##  Development Notes
 
 - **Logs:** The middleware logs each action (requests added, removed, blocked) to the console for transparency.
@@ -189,5 +191,13 @@ rateLimiter({ secondsWindow: 30, allowedHits: 10 }) // 10 requests per 30 second
 Install them all with `npm install`.
 
 ---
+
+## Refernces
+
+- [Sliding Window Algorithm Explained (LeakyBucket/SlidingWindow)](https://tech.groww.in/rate-limiter-and-its-algorithms-with-illustrations-564455162935)
+- [Redis Sorted Sets Documentation](https://redis.io/docs/latest/develop/data-types/sorted-sets/)
+- [Express Middleware Documentation](https://expressjs.com/en/guide/using-middleware.html)
+- [Node.js Official Docs](https://nodejs.org/en/docs/)
+
 
 ## ⭐️ Star this repo if you found it helpful!
