@@ -1,9 +1,12 @@
 import express from "express";
+import router from "./routes/routes.js"
 
 const app = express();
 const PORT = 8050;
 
-app.get("/", (req,res) => {
+app.use("/", router);
+
+app.get("/server", (req,res) => {
     res.send("Hello");
 })
 
