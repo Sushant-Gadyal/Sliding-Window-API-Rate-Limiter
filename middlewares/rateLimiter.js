@@ -13,10 +13,10 @@ const rateLimiter = ({ secondsWindow , allowedHits }) => {
         const exists  = await redis.exists(key);
         if(!exists){
             console.log(`${key} does not exists`);
-            const res_add = await redis.zadd(key, currentSeconds, currentSeconds.toString());
+            const res_add = await redis.zADD(key, currentSeconds, currentSeconds.toString());
         }
         else{
-             
+            
         }
 
         next();
