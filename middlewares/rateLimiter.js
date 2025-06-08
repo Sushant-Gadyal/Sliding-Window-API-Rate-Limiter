@@ -14,16 +14,29 @@ const rateLimiter = ({ secondsWindow , allowedHits }) => {
         if(!exists){
             console.log(`${key} does not exists`);
             const res_add = await redis.zadd(key, currentSeconds, currentSeconds);
+            next();
         }
         else{
             const notInWindow = currentSeconds - secondsWindow;
             const req_remove = await redis.zremrangebyscore(key, 0, notInWindow);
             console.log(`No of requests removed: ${req_remove}`);
 
-            console.log(`Set size is: `, await redis.zcard(key));
+            const rate_limit_size = await redis.zcard(key);
+            console.log(`Set size is: `, rate_limit_size);
+
+            if(rate_limit_size == allowedHits){
+                return res.status(429).json({
+                    message: "Too many requests, Please try again later!",
+                    limit: allowedHits,
+                    windowSeconds: secondsWindow,
+                });
+            }
+            else{
+
+                next();
+            }
         }
 
-        next();
     }
 
 }
