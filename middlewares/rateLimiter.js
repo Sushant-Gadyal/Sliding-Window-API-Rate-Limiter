@@ -32,7 +32,8 @@ const rateLimiter = ({ secondsWindow , allowedHits }) => {
                 });
             }
             else{
-
+                const res_add = await redis.zadd(key, currentSeconds, currentSeconds); 
+                console.log(`New element added successfully: `, res_add);
                 next();
             }
         }
