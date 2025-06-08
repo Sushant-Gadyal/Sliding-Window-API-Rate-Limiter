@@ -4,9 +4,7 @@ const rateLimiter = ({ secondsWindow , allowedHits }) => {
     return async function(req, res, next){
         const ipAddress = req.ip;
         const key = `rate_limit:${ipAddress}`;
-
-        const currentSeconds = Math.floor( Date.now() / 1000 ) ;
-
+        const currentSeconds = Math.floor( Date.now() / 1000 );
 
         const exists  = await redis.exists(key);
         if(!exists){
