@@ -54,7 +54,7 @@ redis-server
 ---
 
 
-## 🏃 Usage
+##  Usage
 
 ### 1. **Start the API Server**
 
