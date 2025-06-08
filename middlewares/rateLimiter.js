@@ -16,7 +16,11 @@ const rateLimiter = ({ secondsWindow , allowedHits }) => {
             const res_add = await redis.zadd(key, currentSeconds, currentSeconds);
         }
         else{
+            const notInWindow = currentSeconds - secondsWindow;
+            const req_remove = await redis.zremrangebyscore(key, 0, notInWindow);
+            console.log(`No of requests removed: ${req_remove}`);
 
+            console.log(`Set size is: `, await redis.zcard(key));
         }
 
         next();
