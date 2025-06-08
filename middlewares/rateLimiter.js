@@ -1,9 +1,7 @@
-import express from "express";
 import redis from "../config/redisClient.js";
 
 const rateLimiter = ({ secondsWindow , allowedHits }) => {
     return async function(req, res, next){
-
         const ipAddress = req.ip;
         const key = `rate_limit:${ipAddress}`;
 
