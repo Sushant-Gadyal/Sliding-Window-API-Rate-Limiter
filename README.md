@@ -16,7 +16,7 @@ This middleware tracks user requests by IP and restricts the number of requests 
 
 ---
 
-## 🛠️ Setup & Installation
+##  Setup & Installation
 
 ### 1. **Clone the Repository**
 
@@ -180,7 +180,7 @@ rateLimiter({ secondsWindow: 30, allowedHits: 10 }) // 10 requests per 30 second
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 - express
 - ioredis
