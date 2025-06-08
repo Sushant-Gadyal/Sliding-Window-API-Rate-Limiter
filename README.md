@@ -53,6 +53,38 @@ redis-server
 
 ---
 
+
+## 🏃 Usage
+
+### 1. **Start the API Server**
+
+```bash
+npm start
+```
+
+### 2. **Test the Rate Limiter**
+
+A sample endpoint is set up for demonstration.
+
+#### Example Endpoint (in `index.js`):
+
+```js
+import rateLimiter from './middlewares/rateLimiter.js';
+
+app.get('/test', rateLimiter({ secondsWindow: 10, allowedHits: 5 }), (req, res) => {
+  res.send('You are allowed!');
+});
+```
+
+#### **Test with cURL**
+
+```bash
+for i in {1..10}; do
+  curl -i http://localhost:3000/test
+done
+```
+
+
 ---
 
 ##  How It Works
